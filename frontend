@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Safety Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏗️ SafetyGuard Analytics</h1>
+            <div class="status">🟢 LIVE</div>
+        </header>
 
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card workers">
+                <h3>Workers Detected</h3>
+                <div class="stat-number" id="workers-count">12</div>
+            </div>
+            <div class="stat-card machinery">
+                <h3>Heavy Machinery</h3>
+                <div class="stat-number" id="machinery-count">3</div>
+            </div>
+            <div class="stat-card incidents">
+                <h3>Near-Misses Today</h3>
+                <div class="stat-number danger" id="incidents-count">2</div>
+            </div>
+            <div class="stat-card uptime">
+                <h3>Uptime</h3>
+                <div class="stat-number" id="uptime">99.8%</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Live Video Feed -->
+            <div class="video-panel">
+                <h2>Live Camera Feed</h2>
+                <div class="video-container">
+                    <video id="liveFeed" autoplay muted loop>
+                        <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                    </video>
+                    <div class="detection-overlay">
+                        <div class="bounding-box" id="worker1">
+                            <span>Worker</span>
+                        </div>
+                        <div class="bounding-box forklift" id="forklift1">
+                            <span>Forklift</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Query & Controls -->
+            <div class="controls-panel">
+                <h2>Safety Query</h2>
+                <input type="text" id="queryInput" placeholder="e.g., Show forklift near-misses...">
+                <button onclick="runQuery()">Search Incidents</button>
+                <div id="queryResults" class="query-results"></div>
+            </div>
+        </div>
+
+        <!-- Incidents Log -->
+        <div class="incidents-panel">
+            <h2>Recent Incidents</h2>
+            <div id="incidents-list" class="incidents-list">
+                <!-- Dynamic incidents -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
